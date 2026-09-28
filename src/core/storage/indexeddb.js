@@ -1,1 +1,4 @@
-
+const DB='ai-analytics-builder', VERSION=1;
+export function openDB(){ return new Promise((resolve,reject)=>{ const r=indexedDB.open(DB,VERSION); r.onupgradeneeded=()=>{for(const s of ['datasets','analyses','evidence']) if(!r.result.objectStoreNames.contains(s)) r.result.createObjectStore(s,{keyPath:'id'});}; r.onsuccess=()=>resolve(r.result); r.onerror=()=>reject(r.error); }); }
+export async function put(store,value){ const db=await openDB(); return new Promise((resolve,reject)=>{const tx=db.transaction(store,'readwrite');tx.objectStore(store).put(value);tx.oncomplete=()=>resolve(value);tx.onerror=()=>reject(tx.error);}); }
+export async function all(store){ const db=await openDB(); return new Promise((resolve,reject)=>{const tx=db.transaction(store,'readonly');const r=tx.objectStore(store).getAll();r.onsuccess=()=>resolve(r.result);r.onerror=()=>reject(r.error);}); }
