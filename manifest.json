@@ -1,0 +1,14 @@
+{
+  "name": "AI Analytics Builder",
+  "short_name": "Analytics Builder",
+  "description": "Local-first workspace for designing and building an AI-powered analytics tool.",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#080c14",
+  "theme_color": "#0ea5e9",
+  "lang": "uk",
+  "icons": [
+    {"src":"icons/icon-192.svg","sizes":"192x192","type":"image/svg+xml","purpose":"any maskable"},
+    {"src":"icons/icon-512.svg","sizes":"512x512","type":"image/svg+xml","purpose":"any maskable"}
+  ]
+}
